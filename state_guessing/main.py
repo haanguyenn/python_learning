@@ -30,5 +30,8 @@ while game_is_on:
             correct_list.append(guess)
     if guess == 'exit':
         game_is_on = False
+        missing_state = [state for state in all_state if state not in correct_list]
+        df_missing_state = pd.DataFrame(missing_state)
+        df_missing_state.to_csv('your_missing_answer.csv')
         screen.bye()
 screen.mainloop()
